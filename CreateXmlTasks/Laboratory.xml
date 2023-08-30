@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<lab>
+  <room num="1" title="Органическая_химия" phone="259-89-39">
+    <case title="ЛВЖ">
+      <reagent quality="хч" CAS="108-88-3" content="99.8">Толуол</reagent>
+      <reagent quality="тех" CAS="64-17-5" content="80.2">Этанол</reagent>
+    </case>
+    <case title="ПАВы">
+      <reagent CAS="1234567-12-3" content="50.2">Неонол</reagent>
+      <reagent content="30.3">Сурфогель</reagent>
+      <reagent>Оксипав</reagent>
+    </case>
+    <device verificationDate="2023-01-12">Ротационный_испаритель</device>
+    <device verificationDate="2023-02-20">Рефрактометр</device>
+  </room>
+  <room num="2" title="Неорганическая_химия" phone="255-55-55">
+    <case title="Соли">
+      <reagent quality="ч" CAS="7646-85-7" content="98.5">Хлорид_цинка</reagent>
+    </case>
+    <device verificationDate="2022-05-25">Криостат</device>
+    <device verificationDate="2023-02-12">Мешалка</device>
+    <device verificationDate="2021-07-16">Автоклав</device>
+  </room>
+  <room num="3" title="Физическая_химия" phone="235-49-32">
+    <case title="Кислоты">
+      <reagent quality="ЧДА" content="98.7">Серная_кислота</reagent>
+    </case>
+    <device verificationDate="2022-03-23">Реовискозиметр</device>
+    <device verificationDate="2022-10-10">Сушильный_шкаф</device>
+  </room>
+</lab>

@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="LabXML"
+    targetNamespace="http://tempuri.org/LabXML.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/LabXML.xsd"
+    xmlns:mstns="http://tempuri.org/LabXML.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	
+	<xs:element name="lab">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="room" type="roomType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="roomType">
+		<xs:sequence minOccurs="1" maxOccurs="unbounded">
+			<xs:element name="case" type="caseType" />
+			<xs:element name="deviсe" type="deviсeType"/>
+		</xs:sequence>
+		<xs:attribute name="num" type="xs:positiveInteger" />
+		<xs:attribute name="title" type="xs:string" />
+		<xs:attribute name="phone" type="phoneType" />
+	</xs:complexType>
+	<xs:simpleType name="phoneType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="\b\d{3}-\d{2}-\d{2}\b" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="caseType">
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="glassware" type="glasswareType"/>
+			<xs:element name="reagent" type="reagentType" />
+		</xs:choice>
+		<xs:attribute name="title" type="xs:string" />
+	</xs:complexType>
+	<xs:complexType name="deviсeType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="verificationDate" type="xs:date" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="glasswareType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="count" type="countType" default="отсутствует" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="countType">
+		<xs:union memberTypes="countEnum xs:positiveInteger" />
+	</xs:simpleType>
+	<xs:simpleType name="countEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="отсутствует" />
+			<xs:enumeration value="неограничено" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="reagentType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="quality" type="qualityType" />
+				<xs:attribute name="CAS" type="casType" />
+				<xs:attribute name="content" type="contentType" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	
+	<xs:simpleType name="qualityType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ТЕХ" />
+			<xs:enumeration value="Ч" />
+			<xs:enumeration value="ЧДА" />
+			<xs:enumeration value="ХЧ" />
+			<xs:enumeration value="ОСЧ" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="casType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="\b\d{1,7}-\d{2}-\d{1}\b" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="contentType">
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="0" />
+			<xs:maxInclusive value="100" />
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
